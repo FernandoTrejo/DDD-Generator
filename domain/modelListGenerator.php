@@ -14,7 +14,7 @@ namespace $namespace\\$modelName\\Domain;
 
 final class $pluralModelName
 {
-    private array ".'$list'."; 
+    private ".'$list'."; 
 
     public function __construct(array ".'$list'.")
     {

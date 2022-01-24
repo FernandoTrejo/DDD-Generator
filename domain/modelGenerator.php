@@ -11,6 +11,7 @@ class ModelGenerator{
         $propertiesText = "\n";
         $propertiesText2 = "\n";
         $createParams = "\n";
+        $createParamsArray = array();
         $construct = "\n";
         $getters = "\n";
         $paramsFromPrimitives = "\n";
@@ -35,11 +36,12 @@ class ModelGenerator{
             $valueObjects .= "use $namespace\\$modelName\\Domain\\ValueObjects\\$valueObject; \n";
 
             //properties / constructor
-            $propertiesText .= "private ?$valueObject $$varName;\n";
+            $propertiesText .= "private $$varName;\n";
             $propertiesText2 .= "$$varName,\n";
 
             //createParams
-            $createParams .= "$valueObject $$varName = null,\n";
+            // $createParams .= "$valueObject $$varName = null,\n";
+            $createParamsArray[] = "$valueObject $$varName = null";
 
             //construct
             $construct .= '$this->' . "$varName = $$varName;\n";
@@ -62,7 +64,7 @@ class ModelGenerator{
                 ".'$data'."['$propName'] = ".'$this->'.$varName."->value();
             } \n\n";
         }
-        
+        $createParams = implode(",\n", $createParamsArray);
 
         $content = "
 <?php

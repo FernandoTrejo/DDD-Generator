@@ -22,7 +22,7 @@ namespace $namespace\\$modelName\\Domain\\ValueObjects;
 final class $name
 {
 
-    private $type ".'$value'.";
+    private ".'$value'.";
 
     
     public function __construct($type ".'$value'.")
